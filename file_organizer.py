@@ -92,11 +92,6 @@ for existing_file in glob.glob(os.path.join(current_dir, '*.*')):
             shutil.move(existing_file, new_dir+'\\Books')
         except FileExistsError as e:
             shutil.move(existing_file, new_dir + '\\Books')
-    else:
-        try:
-            other_dir = os.makedirs(new_dir+'\\Others')
-            shutil.move(existing_file, new_dir+'\\Others')
-        except FileExistsError as e:
-            shutil.move(existing_file, new_dir + '\\Others')
+  
 print('Total files in this folder : %d' %file_counter)
-print('process took',((time.time()-start)/60),'min')
+print('process took',((time.time()-start),'seconds')
