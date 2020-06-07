@@ -7,19 +7,19 @@ start = time.time()
 
 current_time = datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S') #Getting time to generate a name
 
-current_dir = 'D:\\Software' #os.getcwd() #Current Directory
+current_dir = 'D:\\Bureau' #os.getcwd() #Current Directory
 
 new_dir = current_dir+"\\Organized%s"%current_time
 
 executing_dir = os.makedirs(new_dir) #Creating A New directory
 
-##############################Getting files names###########################################
+##############################Getting files names#############################
 file_counter = 0
 for existing_file in glob.glob(os.path.join(current_dir, '*.*')):
     file_counter += 1
     z = existing_file.split('\\')
     x = z[-1]                  #File Name
-    y = x.split('.')[1]        #File Format
+    y = x.split('.')[-1]        #File Format
     if y in text_for:
             try:
                 text_dir = os.makedirs(new_dir+'\\Text')
@@ -92,6 +92,11 @@ for existing_file in glob.glob(os.path.join(current_dir, '*.*')):
             shutil.move(existing_file, new_dir+'\\Books')
         except FileExistsError as e:
             shutil.move(existing_file, new_dir + '\\Books')
-  
+    else:
+        try:
+            other_dir = os.makedirs(new_dir+'\\Others')
+            shutil.move(existing_file, new_dir+'\\Others')
+        except FileExistsError as e:
+            shutil.move(existing_file, new_dir + '\\Others')
 print('Total files in this folder : %d' %file_counter)
-print('process took',((time.time()-start),'seconds')
+print('process took',((time.time()-start),'seconds'))
