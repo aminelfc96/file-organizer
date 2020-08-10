@@ -7,13 +7,13 @@ start = time.time()
 
 current_time = datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S') #Getting time to generate a name
 
-current_dir = 'D:\\Bureau' #os.getcwd() #Current Directory
+current_dir = os.getcwd() #Current Directory
 
 new_dir = current_dir+"\\Organized%s"%current_time
 
 executing_dir = os.makedirs(new_dir) #Creating A New directory
 
-##############################Getting files names#############################
+##############################Getting files names###########################################
 file_counter = 0
 for existing_file in glob.glob(os.path.join(current_dir, '*.*')):
     file_counter += 1
